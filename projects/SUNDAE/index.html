@@ -86,7 +86,7 @@
               <a href="https://github.com/Jzian">Zhou Jiang</a><sup>1,4</sup>, 
             </span>
             <span class="author-block">
-              Baijun Ye<sup>1</sup>, 
+              Baijun Ye<sup>1, 4</sup>, 
             </span>
             <br>
             <span class="author-block">
@@ -197,24 +197,23 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
         <!-- <h2 class="title is-3" style="margin-top: -20px">Motivation</h2> -->
-
         <img src="./resources/model_images/teaser.png" class="center" style="width: 100%;">
         <div class="content has-text-justified">
           <p style="margin-top: 0px">
             (a) 3D Gaussian splatting (3DGS) results trained for 7K iterations. (b) 3DGS results trained for 30K iterations, in whichmore Gaussian primitives are allocated so quality gets higher, speed gets slower, and storage gets larger compared to (a). (c) SUNDAE results by pruning 90% primitives upon (a), being much smaller in storage, more accurate and a little bit slower than (a). Note that the storage usage is not 10% of (a) because an additional neural compensation head is used.
           </p>
         </div>
-
       </div>
     </div>
     <!--/ Animation. -->
   </div>
 </section>
 
-<section class="section">
+<section class="section", style="background-color: #f1f1f1;">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
+    
       <div class="column is-four-fifths">
         <h2 class="title is-3" style="margin-top: -30px">Abstract</h2>
         <div class="content has-text-justified">
@@ -240,6 +239,7 @@
     <!--/ Paper video. -->
   </div>
 </section>
+
 
 
 <section class="section">
@@ -321,11 +321,10 @@
     <div class="columns is-centered ">
       <div class="column is-full-width">
         <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Results</h2>
-        <br>
-        <h3 class="title is-4 has-text-centered">Quantitative Results</h3>
         <img src="./resources/model_images/table.png" class="center">
-        <p>We compare our method with Mip-Splatting and 3DGS in the zoom-out (first row) and zoom-in (second row) cases, respectively. Our method eliminates the dilation & erosion artefacts of 3DGS 
-        under different rendering settings, while improving the jaggedness effect in the zoom-out case. Our method obtains results comparable with and beyond (zoom-out case) Mip-Splatting.</p>
+        <br><br>
+        <p style="text-align:justify">Our method effectively balances high rendering performance, speed, and efficient memory usage, demonstrating significant advancements. Specifically, at 30% and 50% sampling rates, it manages to deliver top-tier performance metrics while achieving rapid rendering speeds of 88 FPS and maintaining a manageable memory footprint of 393MB. This balance showcases the strength of our spectral pruning and neural compensation techniques, which adeptly handle the relationships among Gaussian primitives, ensuring minimal quality loss even when reducing the abundance of primitives. The efficiency of our approach is further highlighted by the SUNDAE variant, which at very low sampling rates like 10% and even 1%, still offers remarkable rendering efficiency and reduced memory demands, maintaining competitive image quality. Overall, our method stands out for its robustness and capability to optimize the trade-offs between quality, speed, and memory usage in complex rendering environments.
+        </p>
         <!-- <div class="row_two_columns">
           <div class="content has-text-lefted">
             <video class="video" width="100%" id="xyalias1" loop playsinline autoplay muted src="resources/360_zoomout.mp4" onplay="resizeAndPlay3(this)" ></video>
