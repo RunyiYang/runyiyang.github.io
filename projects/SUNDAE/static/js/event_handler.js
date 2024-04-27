@@ -82,8 +82,8 @@ document.addEventListener('DOMContentLoaded', domReady);
         function objectSceneEvent(idx) {
             let dics = document.querySelectorAll('.b-dics')[0]
             let sections = dics.getElementsByClassName('b-dics__section')
-            let imagesLength = 5;
-            if(idx>=3) imagesLength = 4;
+            let imagesLength = 8;
+            // if(idx>=3) imagesLength = 4;
             // console.log(sections);
             for (let i = 0; i < imagesLength; i++) {
                 // console.log(sections[i]);
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', domReady);
                     sections[1].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__image')[0].setAttribute('style', 'left: -259px;');
                     sections[2].setAttribute('style', 'flex: 0 0 259px;');
                     sections[2].getElementsByClassName('b-dics__slider')[0].setAttribute('style', 'left: 777px;');
-                    // sections[2].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__text')[0].innerText = 'SA-GS Adaptive Filter (Ours)';
+                    // sections[2].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__text')[0].innerText = 'InstantNGP';
                     sections[2].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__image')[0].setAttribute('style', 'left: -518px;');
                     sections[3].setAttribute('style', 'flex: 0 0 259px;');
                     // sections[3].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__text')[0].innerText = 'GT';
@@ -115,12 +115,12 @@ document.addEventListener('DOMContentLoaded', domReady);
                     sections[1].getElementsByClassName('b-dics__slider')[0].setAttribute('style', 'left: 414px;');
                     sections[1].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__image')[0].setAttribute('style', 'left: -207px;');
                     sections[2].setAttribute('style', 'flex: 0 0 207px;');
-                    // sections[2].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__text')[0].innerText = 'SA-GS Integration (Ours)';
+                    // sections[2].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__text')[0].innerText = 'Ours-10%';
                     sections[2].getElementsByClassName('b-dics__slider')[0].setAttribute('style', 'left: 621px;');
                     sections[2].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__image')[0].setAttribute('style', 'left: -414px;');
                     sections[3].setAttribute('style', 'flex: 0 0 207px;');
                     sections[3].getElementsByClassName('b-dics__slider')[0].setAttribute('style', 'left: 828px;');
-                    // sections[3].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__text')[0].innerText = 'SA-GS Super Sampling (Ours)';
+                    // sections[3].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__text')[0].innerText = 'InstantNGP';
                     sections[3].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__image')[0].setAttribute('style', 'left: -621px;');
                     sections[4].setAttribute('style', 'flex: 0 0 207px;');
                     // sections[4].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__text')[0].innerText = 'GT';
@@ -146,8 +146,17 @@ document.addEventListener('DOMContentLoaded', domReady);
                     case 5:
                         image.src = 'resources/360_images/Stump';
                         break;
+                    case 6:
+                        image.src = 'resources/blender_images/DrJohnson';
+                    break;
+                    case 7:
+                        image.src = 'resources/blender_images/PlayRoom';
+                    break;
+                    case 8:
+                        image.src = 'resources/TT_images/Train';
+                    break;
                 }
-                if(idx<3){
+                if(idx<=8){
                     switch (i) {
                         case 0:
                             image.src = image.src + '/3DGS.png';
@@ -164,6 +173,15 @@ document.addEventListener('DOMContentLoaded', domReady);
                         case 4:
                             image.src = image.src + '/GT.png';
                             break;
+                        case 6:
+                            image.src = 'resources/blender_images/DrJohnson';
+                        break;
+                        case 7:
+                            image.src = 'resources/blender_images/PlayRoom';
+                        break;
+                        case 8:
+                            image.src = 'resources/TT_images/Train';
+                        break;
     
                     }
                 }else{
