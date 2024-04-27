@@ -162,10 +162,10 @@ document.addEventListener('DOMContentLoaded', domReady);
                             image.src = image.src + '/3DGS.png';
                             break;
                         case 1:
-                            image.src = image.src + '/Ours-1.png';
+                            image.src = image.src + '/Ours1.png';
                             break;
                         case 2:
-                            image.src = image.src + '/Ours-10.png';
+                            image.src = image.src + '/Ours10.png';
                             break;
                         case 3:
                             image.src = image.src + '/InstantNGP.png';
