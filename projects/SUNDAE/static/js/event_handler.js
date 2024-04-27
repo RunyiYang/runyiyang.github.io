@@ -99,10 +99,10 @@ document.addEventListener('DOMContentLoaded', domReady);
                     sections[1].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__image')[0].setAttribute('style', 'left: -259px;');
                     sections[2].setAttribute('style', 'flex: 0 0 259px;');
                     sections[2].getElementsByClassName('b-dics__slider')[0].setAttribute('style', 'left: 777px;');
-                    sections[2].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__text')[0].innerText = 'SA-GS Adaptive Filter (Ours)';
+                    // sections[2].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__text')[0].innerText = 'SA-GS Adaptive Filter (Ours)';
                     sections[2].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__image')[0].setAttribute('style', 'left: -518px;');
                     sections[3].setAttribute('style', 'flex: 0 0 259px;');
-                    sections[3].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__text')[0].innerText = 'GT';
+                    // sections[3].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__text')[0].innerText = 'GT';
                     sections[3].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__image')[0].setAttribute('style', 'left: -777px;');
                 }
                 if(imagesLength == 5 && sections.length == 4){
@@ -115,70 +115,70 @@ document.addEventListener('DOMContentLoaded', domReady);
                     sections[1].getElementsByClassName('b-dics__slider')[0].setAttribute('style', 'left: 414px;');
                     sections[1].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__image')[0].setAttribute('style', 'left: -207px;');
                     sections[2].setAttribute('style', 'flex: 0 0 207px;');
-                    sections[2].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__text')[0].innerText = 'SA-GS Integration (Ours)';
+                    // sections[2].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__text')[0].innerText = 'SA-GS Integration (Ours)';
                     sections[2].getElementsByClassName('b-dics__slider')[0].setAttribute('style', 'left: 621px;');
                     sections[2].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__image')[0].setAttribute('style', 'left: -414px;');
                     sections[3].setAttribute('style', 'flex: 0 0 207px;');
                     sections[3].getElementsByClassName('b-dics__slider')[0].setAttribute('style', 'left: 828px;');
-                    sections[3].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__text')[0].innerText = 'SA-GS Super Sampling (Ours)';
+                    // sections[3].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__text')[0].innerText = 'SA-GS Super Sampling (Ours)';
                     sections[3].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__image')[0].setAttribute('style', 'left: -621px;');
                     sections[4].setAttribute('style', 'flex: 0 0 207px;');
-                    sections[4].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__text')[0].innerText = 'GT';
+                    // sections[4].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__text')[0].innerText = 'GT';
                     sections[4].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__image')[0].setAttribute('style', 'left: -828px;');
                 }
                 let image = sections[i].getElementsByClassName('b-dics__image-container')[0].getElementsByClassName('b-dics__image')[0]
                 switch (idx) {
                     case 0:
-                        image.src = 'resources/360_images/bicycle_48';
+                        image.src = 'resources/360_images/Bicycle';
                         break;
                     case 1:
-                        image.src = 'resources/360_images/room_25';
+                        image.src = 'resources/360_images/Counter';
                         break;
                     case 2:
-                        image.src = 'resources/360_images/kitchen_59';
+                        image.src = 'resources/360_images/Garden';
                         break;
                     case 3:
-                        image.src = 'resources/360_images/garden_8';
+                        image.src = 'resources/360_images/Kitchen';
                         break;
                     case 4:
-                        image.src = 'resources/360_images/counter_134';
+                        image.src = 'resources/360_images/Room';
                         break;
                     case 5:
-                        image.src = 'resources/360_images/treehill_64';
+                        image.src = 'resources/360_images/Stump';
                         break;
                 }
                 if(idx<3){
                     switch (i) {
                         case 0:
-                            image.src = image.src + '_raw.png';
+                            image.src = image.src + '/3DGS.png';
                             break;
                         case 1:
-                            image.src = image.src + '_mip.png';
+                            image.src = image.src + '/Ours-1%.png';
                             break;
                         case 2:
-                            image.src = image.src + '_sags_int.png';
+                            image.src = image.src + '/Ours-10%.png';
                             break;
                         case 3:
-                            image.src = image.src + '_sags_sup.png';
+                            image.src = image.src + '/InstantNGP.png';
                             break;
                         case 4:
-                            image.src = image.src + '_gt.png';
+                            image.src = image.src + '/GT.png';
                             break;
     
                     }
                 }else{
                     switch (i) {
                         case 0:
-                            image.src = image.src + '_raw.png';
+                            image.src = image.src + '/3DGS.png';
                             break;
                         case 1:
-                            image.src = image.src + '_mip.png';
+                            image.src = image.src + '/Ours-1%.png';
                             break;
                         case 2:
-                            image.src = image.src + '_fil.png';
+                            image.src = image.src + '/Ours-10%.png';
                             break;
                         case 3:
-                            image.src = image.src + '_gt.png';
+                            image.src = image.src + '/InstantNGP.png';
                             break;
                     }
                 }
