@@ -13,6 +13,7 @@
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -248,7 +249,6 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
         <h2 class="title is-3" style="margin-top: -20px">Motivation & Methods</h2>
-        <br><br>
         <img src="./resources/model_images/teaser2.png" class="center" style="width: 50%;">
         <div class="content has-text-justified">
           <p style="margin-top: 30px">
@@ -259,14 +259,44 @@
         <img src="./resources/model_images/main.png" class="center">
         <div class="content has-text-justified">
           <p style="margin-top: 30px">
-            <b>Scale ambiguity & 2D Scale-adaptive Filter.</b> The heuristic 2D dilation process in vanilla 3DGS code operates on the pixel space and enlarges the projected 2D Gaus-
-            sian by a fixed amount (around 1.64 pixel). However, a fixed 2D dilation (1.64 pixel) can result in scale ambiguities when representing the same scene at different rendering
-            settings, as shown by the green expansion area. <b>(a)</b> When the Gaussian scale is held constant and the resolution changes, the dilation scale (green) changes inconsistently.
-            <b>(b)</b> When the Gaussian scale changes and the resolution remains constant, the dilation scale (green) does not change with the Gaussian. Our 2D scale-adaptive filter ensures
-            that the Gaussian scale remains consistent across different rendering settings, as shown by the red expansion area. This keeps the scale consistent with the training setup.
+            <b>(a) Pipeline:</b> Our proposed method warms up a 3D Gaussian field firstly, followed by a Graph-based pruning strategy to down-sample the Gaussian primitives, and a convolutional neural network to compensate the losses caused by pruning.
+            <br>
+            <b>(b) Graph-based Pruning:</b> A graph based on the spatial relationship between the Gaussian primitives, is utilized for pruning post warm-up. Employing a band-limited graph filter, this process facilitates the extraction of fine details from high-frequency components, alongside capturing general features from low-frequency parts, thereby enabling a comprehensive and efficient representation of the entire scene.
           </p>
         </div>
-        <img src="./resources/model_images/SI.png" class="center" width="50%">
+        <br><br>
+        <!-- <img src="./resources/model_images/Graph.png" class="center">
+        <div class="content has-text-justified">
+          <h3 class="title is-4">Graph Construction</h3>
+          <p>Given a set of Gaussian Primitives \( P \), we want to construct a nearest neighbor graph. The adjacent matrix \( W \) of the graph is defined as:</p>
+          <p>\[
+          W_{ij}=\left\{
+          \begin{array}{rcl}
+          &\exp({-\frac{||x_i- x_j||^2}{2*\sigma ^2}}),    \quad & { ||x_i-x_j||^2 < \tau} \\
+           & 0,    & otherwise
+          \end{array}\right.
+          \]</p>
+          <p>where \( x_i \) and \( x_j \) are central points in \( P \), \( \tau \) is a hyperparameter, chosen as ten times of the minimum nearest neighborhood distance between primitives experimentally, and \( \sigma \) is the variance of the distance matrix. Equation \( W_{ij} \) demonstrates that when the Euclidean distance of two Gaussian primitives is smaller than a threshold \( \tau \), the two primitives are connected by the graph edge, whose weight corresponds to geometric information between two primitives in Gaussian fields. A weighted degree matrix \( D \) is a diagonal matrix \( D_{i,i} = \sum_j W_{i,j} \), reflecting the density around the \( i \)-th primitive.</p>
+
+          <h3 class="title is-4">Graph Filtering and Sampling</h3>
+          <p>We propose a band-limited graph filter, combined with a high-frequency filter and low-frequency filter, to catch the detailed information and general information of the scene. Specifically, the input graph signal \( x \) represents the central of Gaussian primitives.</p>
+      
+          <p>A simple design of a high-pass filter is a Haar-like one:</p>
+          <p>\[
+              \mathcal{H}_H = I - A = V (I - \Lambda) V^{-1},
+          \]</p>
+          <p>where \( A \) is the graph shift and \( V \) and \( \Lambda \) are the corresponding eigenvectors and eigenvalues in diagonal form. Denote that all eigenvalues are \( \lambda_i, i \in \{0, 1, ..., N-1\} \). We order \( \lambda_i \) in descending order, thus we have \( 1 - \lambda_i \leq 1 - \lambda_{i+1} \) and \( \lambda_0 = 1 \). This indicates low-frequency response attenuates and high-frequency response amplifies.</p>
+          <p>Similarly, a Haar-like low-pass graph filter is:</p>
+          <p>\[
+              \mathcal{H}_L = I + \frac{A}{\lambda_0} = V (I + \Lambda / \lambda_0 ) V^{-1}.
+          \]</p>
+          <p>Then we have the response of the input signal \( x \) corresponding to filters and the response magnitude could be written as:</p>
+          <p>\[
+              \pi_i = ||f_i||^2.
+          \]</p>
+        </div> -->
+      
+        <!-- <img src="./resources/model_images/SI.png" class="center" width="50%">
         <div class="content has-text-justified">
           <p style="margin-top: 30px">
             <b>Super Sampling and Integration applied on Gaussian.</b> Our super sampling method, denoted as <b>(a)</b>, involves dividing each pixel thread into 9 sub-pixels when
@@ -274,7 +304,7 @@
             to the sampling results. <b>(b)</b> is our integration method that diagonalizes the Gaussian covariance matrix by pixel rotation. This decomposes the integration result into the
             product of two marginal Gaussian distributions.
           </p>
-        </div>
+        </div> -->
 
       </div>
     </div>
@@ -293,10 +323,11 @@
       <div class="column is-full-width">
         <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Results</h2>
         <br>
-        <h3 class="title is-4 has-text-centered">Comparison on Mip-NeRF 360 Dataset</h3>
+        <h3 class="title is-4 has-text-centered">Quantitative Results</h3>
+        <img src="./resources/model_images/table.png" class="center">
         <p>We compare our method with Mip-Splatting and 3DGS in the zoom-out (first row) and zoom-in (second row) cases, respectively. Our method eliminates the dilation & erosion artefacts of 3DGS 
         under different rendering settings, while improving the jaggedness effect in the zoom-out case. Our method obtains results comparable with and beyond (zoom-out case) Mip-Splatting.</p>
-        <div class="row_two_columns">
+        <!-- <div class="row_two_columns">
           <div class="content has-text-lefted">
             <video class="video" width="100%" id="xyalias1" loop playsinline autoplay muted src="resources/360_zoomout.mp4" onplay="resizeAndPlay3(this)" ></video>
             <canvas height=0 class="videoMerge" id="xyalias1Merge3"></canvas>
@@ -404,17 +435,17 @@
     </div>
 
   </div>
-</section>
+</section> -->
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{song2024sa,
+    <!-- <pre><code>@article{song2024sa,
       title={SA-GS: Scale-Adaptive Gaussian Splatting for Training-Free Anti-Aliasing},
       author={Song, Xiaowei and Zheng, Jv and Yuan, Shiran and Gao, Huan-ang and Zhao, Jingwei and He, Xiang and Gu, Weihao and Zhao, Hao},
       journal={arXiv preprint arXiv:2403.19615},
       year={2024}
-    }</code></pre>
+    }</code></pre> -->
   </div>
 </section>
 
@@ -457,8 +488,8 @@
             Commons Attribution-ShareAlike 4.0 International License</a>.
             This webpage template is from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. 
             We sincerely thank <a href="https://keunhong.com/">Keunhong Park</a> for developing and open-sourcing this template. 
-            The video comparison with sliding bar is from <a href="https://dorverbin.github.io/refnerf/">Ref-NeRF</a>. 
-            The image comparison with sliding bar is from <a href="https://research.nvidia.com/labs/dir/neuralangelo/">Neuralangelo</a>. 
+            <!-- The video comparison with sliding bar is from <a href="https://dorverbin.github.io/refnerf/">Ref-NeRF</a>.  -->
+            <!-- The image comparison with sliding bar is from <a href="https://research.nvidia.com/labs/dir/neuralangelo/">Neuralangelo</a>.  -->
           </p>
         </div>
       </div>
