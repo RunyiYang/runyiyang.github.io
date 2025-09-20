@@ -9,7 +9,7 @@
   <title>SUNDAE</title>
 
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="./static/css/bootstrap-4.4.1.css">
+  <link rel="stylesheet" href="../../static/css/bootstrap-4.4.1.css">
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -34,31 +34,31 @@
   
   
   
-  <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="../../static/css/bulma.min.css">
+  <link rel="stylesheet" href="../../static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="../../static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="../../static/css/fontawesome.all.min.css">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/icon.png">
+  <link rel="stylesheet" href="../../static/css/index.css">
+  <link rel="icon" href="../../static/images/icon.png">
 
   
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
-  <script src="./static/js/app.js"></script>
-  <script src="./static/js/video_comparison.js"></script>
-  <script src="./static/js/video_comparison_3.js"></script>
+  <script defer src="../../static/js/fontawesome.all.min.js"></script>
+  <script src="../../static/js/bulma-carousel.min.js"></script>
+  <script src="../../static/js/bulma-slider.min.js"></script>
+  <script src="../../static/js/index.js"></script>
+  <script src="../../static/js/app.js"></script>
+  <script src="../../static/js/video_comparison.js"></script>
+  <script src="../../static/js/video_comparison_3.js"></script>
 
-  <link rel="stylesheet" href="./static/css/dics.original.css">
-  <link rel="stylesheet" href="./static/css/dics2.original.css">
-  <script src="./static/js/event_handler.js"></script>
-  <script src="./static/js/dics.original.js"></script>
-  <script src="./static/js/dics2.original.js"></script>
+  <link rel="stylesheet" href="../../static/css/dics.original.css">
+  <link rel="stylesheet" href="../../static/css/dics2.original.css">
+  <script src="../../static/js/event_handler.js"></script>
+  <script src="../../static/js/dics.original.js"></script>
+  <script src="../../static/js/dics2.original.js"></script>
   <script>
     function openDemo(demoName) {
       window.location = 'https://KevinSONG729.github.io/project-pages/SA-GS/demo/' + demoName + '.html';
@@ -197,7 +197,7 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
         <!-- <h2 class="title is-3" style="margin-top: -20px">Motivation</h2> -->
-        <img src="./resources/model_images/teaser.png" class="center" style="width: 100%;">
+        <img src="./assets/model_images/teaser.png" class="center" style="width: 100%;">
         <div class="content has-text-justified">
           <p style="margin-top: 0px">
             (a) 3D Gaussian splatting (3DGS) results trained for 7K iterations. (b) 3DGS results trained for 30K iterations, in whichmore Gaussian primitives are allocated so quality gets higher, speed gets slower, and storage gets larger compared to (a). (c) SUNDAE results by pruning 90% primitives upon (a), being much smaller in storage, more accurate and a little bit slower than (a). Note that the storage usage is not 10% of (a) because an additional neural compensation head is used.
@@ -249,14 +249,14 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
         <h2 class="title is-3" style="margin-top: -20px">Motivation & Methods</h2>
-        <img src="./resources/model_images/teaser2.png" class="center" style="width: 50%;">
+        <img src="./assets/model_images/teaser2.png" class="center" style="width: 50%;">
         <div class="content has-text-justified">
           <p style="margin-top: 30px">
             <b>Relationship among Gaussian Primitives.</b> The left panel shows vanilla 3D Gaussian splatting, which requires a large amount of storage as it does not capture the relationship between primitives. The middle panel shows our spectral pruning technique that is based upon the relationship between 3D Gaussians. The right panel shows that the neural compensation head exploits the relationship between 2D feature splatting results to improve rendering.
           </p>
         </div>
         <br><br>
-        <img src="./resources/model_images/main.png" class="center">
+        <img src="./assets/model_images/main.png" class="center">
         <div class="content has-text-justified">
           <p style="margin-top: 30px">
             <b>(a) Pipeline:</b> Our proposed method warms up a 3D Gaussian field firstly, followed by a Graph-based pruning strategy to down-sample the Gaussian primitives, and a convolutional neural network to compensate the losses caused by pruning.
@@ -264,7 +264,7 @@
             <b>(b) Graph-based Pruning:</b> A graph based on the spatial relationship between the Gaussian primitives, is utilized for pruning post warm-up. Employing a band-limited graph filter, this process facilitates the extraction of fine details from high-frequency components, alongside capturing general features from low-frequency parts, thereby enabling a comprehensive and efficient representation of the entire scene.
           </p>
         </div>
-        <!-- <img src="./resources/model_images/Graph.png" class="center">
+        <!-- <img src="./assets/model_images/Graph.png" class="center">
         <div class="content has-text-justified">
           <h3 class="title is-4">Graph Construction</h3>
           <p>Given a set of Gaussian Primitives \( P \), we want to construct a nearest neighbor graph. The adjacent matrix \( W \) of the graph is defined as:</p>
@@ -295,7 +295,7 @@
           \]</p>
         </div> -->
       
-        <!-- <img src="./resources/model_images/SI.png" class="center" width="50%">
+        <!-- <img src="./assets/model_images/SI.png" class="center" width="50%">
         <div class="content has-text-justified">
           <p style="margin-top: 30px">
             <b>Super Sampling and Integration applied on Gaussian.</b> Our super sampling method, denoted as <b>(a)</b>, involves dividing each pixel thread into 9 sub-pixels when
@@ -321,7 +321,7 @@
     <div class="columns is-centered ">
       <div class="column is-full-width">
         <h2 class="title is-3 has-text-centered" style="margin-top: -30px">Results</h2>
-        <img src="./resources/model_images/table.png" class="center">
+        <img src="./assets/model_images/table.png" class="center">
         <br><br>
         <p style="text-align:justify">Our method effectively balances high rendering performance, speed, and efficient memory usage, demonstrating significant advancements. Specifically, at 30% and 50% sampling rates, it manages to deliver top-tier performance metrics while achieving rapid rendering speeds of 88 FPS and maintaining a manageable memory footprint of 393MB. This balance showcases the strength of our spectral pruning and neural compensation techniques, which adeptly handle the relationships among Gaussian primitives, ensuring minimal quality loss even when reducing the abundance of primitives. The efficiency of our approach is further highlighted by the SUNDAE variant, which at very low sampling rates like 10% and even 1%, still offers remarkable rendering efficiency and reduced memory demands, maintaining competitive image quality. Overall, our method stands out for its robustness and capability to optimize the trade-offs between quality, speed, and memory usage in complex rendering environments.
         </p>
@@ -369,11 +369,11 @@
             </li>
           </ul>
           <div class="b-dics" style="width: 700px; font-weight: 600;margin:auto">
-              <img src="./resources/360_images/Bicycle/3DGS.png" alt="3DGS">
-              <img src="./resources/360_images/Bicycle/Ours-1.png" alt="SUNDAE-1%">
-              <img src="./resources/360_images/Bicycle/Ours-10.png" alt="SUNDAE-10%">
-              <img src="./resources/360_images/Bicycle/InstantNGP.png" alt="InstantNGP">
-              <img src="./resources/360_images/Bicycle/GT.png" alt="GT">
+              <img src="./assets/360_images/Bicycle/3DGS.png" alt="3DGS">
+              <img src="./assets/360_images/Bicycle/Ours-1.png" alt="SUNDAE-1%">
+              <img src="./assets/360_images/Bicycle/Ours-10.png" alt="SUNDAE-10%">
+              <img src="./assets/360_images/Bicycle/InstantNGP.png" alt="InstantNGP">
+              <img src="./assets/360_images/Bicycle/GT.png" alt="GT">
           </div>
         </div>
 
