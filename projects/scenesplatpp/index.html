@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="3D Vision-Language Models using Language-aligned Gaussian Splats for Embodied Reasoning and Beyond">
+  <meta name="keywords" content="3D VLM, embodied scene understanding, Gaussians">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SceneSplat++</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+
+  <style>
+    .tabs {
+      display: flex;
+      border-bottom: 2px solid #ccc;
+      cursor: pointer;
+    }
+    .tab {
+      padding: 1rem 2rem;
+      border: none;
+      background: none;
+      font-weight: bold;
+    }
+    .tab.active {
+      border-bottom: 3px solid #ff6a00;
+      color: #ff6a00;
+    }
+    .tab-content {
+      display: none;
+      padding: 1.5rem 0;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .tabs2 {
+      display: flex;
+      border-bottom: 2px solid #ccc;
+      cursor: pointer;
+    }
+    .tab2 {
+      padding: 1rem 2rem;
+      border: none;
+      background: none;
+      font-weight: bold;
+    }
+    .tab2.active {
+      border-bottom: 3px solid #007bff;
+      color: #007bff;
+    }
+    .tab-content2 {
+      display: none;
+      padding: 1.5rem 0;
+    }
+    .tab-content2.active {
+      display: block;
+    }
+    .tabs_outer {
+      display: flex;
+      border-bottom: 2px solid #ccc;
+      cursor: pointer;
+    }
+    .tab_outer {
+      padding: 1rem 5rem;
+      border: none;
+      background: none;
+      font-weight: bold;
+    }
+    .tab_outer.active {
+      border-bottom: 3px solid #007bff;
+      color: #007bff;
+    }
+    .tab_outer-content {
+      display: none;
+      padding: 1.5rem 0;
+    }
+    .tab_outer-content.active {
+      display: block;
+    }
+    .tabs_obj {
+      display: flex;
+      border-bottom: 2px solid #ccc;
+      cursor: pointer;
+    }
+    .tab_obj {
+      padding: 1rem 2rem;
+      border: none;
+      background: none;
+      font-weight: bold;
+    }
+    .tab_obj.active {
+      border-bottom: 3px solid #058d56;
+      color: #058d56;
+    }
+    .tab_obj-content {
+      display: none;
+      padding: 1.5rem 0;
+    }
+    .tab_obj-content.active {
+      display: block;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.75rem;
+      text-align: center;
+    }
+    th {
+      background-color: #f7f7f7;
+    }
+    .remark {
+      margin-top: 1rem;
+      font-style: italic;
+      color: #333;
+    }
+    .chart {
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+    .chart img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    table.paper-table {
+    border-collapse: collapse;
+    width: 100%;
+    font-family: sans-serif;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .highlight-blue {
+    background-color: #007bff95;
+    font-weight: bold;
+  }
+
+  .info-toggle {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background: #007acc;
+    color: white;
+    margin-top: 0.5em;
+    border-radius: 20%;
+    width: 1.8em;
+    height: 1.3em;
+    font-size: 1.3em;
+    line-height: 1.2em;
+    text-align: center;
+    font-weight: bold;
+    border: none;
+  }
+
+  .info-content {
+    display: none;
+    margin-top: 0.8em;
+    background: #f0f8ff;
+    padding: 1em;
+    border-radius: 2pt;
+    border: 1px solid #cce7ff;
+    font-size: 0.95em;
+  }
+
+  </style>
+</head>
+<body>
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">SceneSplat++:<br />
+            <p class="title is-3 publication-title">A Large Dataset and Comprehensive<br>
+Benchmark for Language Gaussian Splatting</p>
+          </h1>          
+
+          <!-- <h1 class="title is-4" style="color: #5c5c5c;">NeurIPS 2023</h1> -->
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <sup>&#8727;</sup> <a href="https://insait.ai/mengjiao-ma/">Mengjiao Ma</a><sup>1, 2</sup>, 
+            </span>
+            <span class="author-block">
+              <sup>&#8727;</sup> <a href="https://qimaqi.github.io/">Qi Ma</a><sup>1, 3</sup>, 
+            </span>
+            <span class="author-block">
+              <sup>&#8727;</sup> <a href="https://unique1i.github.io/">Yue Li</a><sup>4</sup>, 
+            </span>
+            <span class="author-block">
+              <sup>&#8727;</sup> <a href="https://scholar.google.com/citations?user=Q225cH0AAAAJ&hl=en">Jiahuan Cheng</a><sup>5</sup>, 
+            </span>
+            <span class="author-block">
+              <a href="https://runyiyang.github.io/">Runyi Yang</a><sup>1</sup>, 
+            </span>
+            <span class="author-block">
+              <sup>&#8224;</sup> <a href="https://amazingren.github.io/">Bin Ren</a><sup>1, 6, 7</sup>, 
+            </span>
+            <span class="author-block">
+              <a href="https://insait.ai/dr-nikola-popovic/">Nikola Popovic</a><sup>1</sup>, 
+            </span>
+            <span class="author-block">
+              Mingqiang Wei<sup>2</sup>, 
+            </span>
+            <span class="author-block">
+              <a href="https://disi.unitn.it/~sebe/">Nicu Sebe</a><sup>7</sup>, 
+            </span>
+            <span class="author-block">
+              <a href="https://insait.ai/prof-luc-van-gool/">Luc Van Gool</a><sup>1</sup>, 
+            </span>
+            <span class="author-block">
+              <a href="https://staff.science.uva.nl/th.gevers/">Theo Gevers</a><sup>4</sup>, 
+            </span>
+            <span class="author-block">
+              <a href="https://oswaldm.github.io/">Martin R. Oswald</a><sup>4</sup>, 
+            </span>
+            <span class="author-block">
+              <a href="https://insait.ai/dr-danda-paudel/">Danda Pani Paudel</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-6 publication-authors affiliations-row">
+            <span class="author-block" style="margin-right: 1em;"><sup>1</sup>INSAIT, Sofia University "St. Kliment Ohridski"</span>
+            <span class="author-block" style="margin-right: 1em;"><sup>2</sup>Nanjing University of Aeronautics and Astronautics</span>
+            <span class="author-block" style="margin-right: 1em;"><sup>3</sup>ETH Z&uuml;rich</span>
+            <span class="author-block" style="margin-right: 1em;"><sup>4</sup>University of Amsterdam</span>
+          </div>
+          <div class="is-size-6 publication-authors affiliations-row">
+            <span class="author-block" style="margin-right: 1em;"><sup>5</sup>Johns Hopkins University</span>
+            <span class="author-block" style="margin-right: 1em;"><sup>6</sup>University of Pisa</span>
+            <span class="author-block" style="margin-right: 1em;"><sup>7</sup>University of Trento</span>
+          </div>
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>&#8727;</sup> indicates equal contribution. <sup>&#8224;</sup> indicates the corresponding author.</span>
+          </div>
+
+          <div class="logo-strip">
+            <img src="static/images/insait.png" alt="INSAIT logo">
+            <img src="static/images/ethz.png" alt="ETH Zurich logo">
+            <img src="static/images/uva.png" alt="University of Amsterdam logo">
+            <img src="static/images/JHU.logo_horizontal.blue.png" alt="Johns Hopkins University logo">
+            <img src="static/images/Upisa.png" alt="University of Pisa logo">
+            <img src="static/images/Tronto.png" alt="University of Trento logo">
+            <img src="static/images/nuaa.png" alt="Nanjing University of Aeronautics and Astronautics logo">
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                  <a href="https://arxiv.org/abs/2506.08710"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/GaussianWorld/gaussian_world_49k"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-download"></i>
+                  </span>
+                  <span>Data</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/GaussianWorld/SceneSplat_Benchmark"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <!--<div class="hero-body">
+      <h2 class="subtitle has-text-centered">
+         <strong>News<span class="emoji">📰: </strong> Articulate3D is accepted to and will be presented in <strong>CVPR 2025 </strong>
+      </h2>
+    </div>! -->
+    <div style="
+      background-color: #f5f5f5;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      margin-top:-2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+    ">
+      <h3 style="margin-bottom: 0.75rem; font-size: 1.25rem; color: #333;">TL;DR</h3>
+      <ul style="margin: 0; color: #555; padding-left: 1.2rem; list-style-type: disc;">
+        <li><strong>SceneSplat-49K Dataset.</strong> We introduce SceneSplat-49K, a large-scale 3DGS dataset comprising approximately 49K diverse indoor and outdoor scenes.</li>
+        <li><strong>SceneSplat-Bench.</strong> We introduce a comprehensive benchmark for evaluating Language Gaussian Splatting (LGS) methods at scale, with 3.7&times; more semantic classes and 50.5&times; more scenes than existing evaluation protocols.</li>
+        <li><strong>Performance Comparison.</strong> The generalizable Language GS approach consistently outperforms per-scene methods across most benchmark variants .</li>
+        <li><strong>Scaling Generalizable LGS.</strong> Scaling the generalizable method on the proposed dataset consistently improves performance. Notably, models trained solely on indoor data transfer effectively to outdoor scenes.</li>
+        
+      </ul>
+    </div>
+
+    <div class="content has-text-justified">
+      <img src="static/images/teaser-scenesplat++.png" class="interpolation-image" alt="SceneSplat++ teaser">
+    </div>
+    <div class="hero-body">
+      <!--<h2 class="subtitle has-text-centered">
+      <strong>GaussianVLM</strong> embeds language directly into spatial 3D representations using Gaussian Splatting, enabling object-free, high-fidelity scene understanding and reasoning for embodied agents.</h2>
+      -->
+      <!--<div class="box" style="max-width: 1000px; margin: 2rem auto;">
+        <h3 class="title is-5">Project Highlights</h3
+        <div class="columns is-multiline">
+          <div class="column is-half">
+            <ul style="list-style: none; padding-left: 0;">
+              <li>✅ First VLM for indoor scene understanding operating on 3D Gaussian splat representations</li>
+              <li>✅ Completely object-detector free</li>
+              <li>✅ Handles scene-centric and object-centric tasks</li>
+              <li>✅ Scene representation — language features per Gaussian</li>
+              <li>
+                ✅ Better generalization to OOD settings than SOTA models<sup>*</sup>
+              </li>
+            </ul>
+          </div>
+          <div class="column is-half">
+            <ul style="list-style: none; padding-left: 0;">
+              <li>✅ Intelligent sparsification of 40k language features to 132 tokens</li>
+              <li>➡️ Dual sparsifier modules: location-guided & task-guided</li>
+              <li>📍 Location-guided sparsifier for extracting ROI features</li>
+              <li>🎯 Task-guided sparsifier based on user task</li>
+            </ul>
+          </div>
+        </div>
+        <p class="is-size-7 has-text-grey mt-3">
+          <sup>*</sup> SOTA as of May 2025, compared to 
+          <a href="https://arxiv.org/abs/2311.18651" target="_blank">LL3DA 3D VLM</a> and 
+          <a href="https://arxiv.org/abs/2311.18651" target="_blank">ll3da</a>.
+        </p>
+      </div>-->
+
+<section class="section">
+   <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+3D Gaussian Splatting (3DGS) serves as a highly performant and efficient encoding
+of scene geometry, appearance, and semantics. Moreover, grounding language
+in 3D scenes has proven to be an effective strategy for 3D scene understanding.
+Current Language Gaussian Splatting line of work falls into three main groups: <strong>(i)
+per-scene optimization-based</strong>, <strong>(ii) per-scene optimization-free</strong>, and <strong>(iii) generalizable approach</strong>. However, most of them are evaluated only on rendered 2D views of
+a handful of scenes and viewpoints close to the training views, limiting their ability
+and insight into holistic 3D understanding. To address this gap, we propose the first
+large-scale benchmark that systematically assesses these three groups of methods
+directly in 3D space, evaluating on 1060 scenes across three indoor datasets and one outdoor dataset. <strong>SceneSplat-Bench</strong> results demonstrate a clear advantage of
+the generalizable paradigm, particularly in relaxing the scene-specific limitation,
+enabling fast feed-forward inference on novel scenes, and achieving superior seg-
+mentation performance. We further introduce <strong>SceneSplat-49K</strong>, a carefully curated
+3DGS dataset comprising around 49K diverse indoor and outdoor scenes obtained
+from multiple sources, with which we demonstrate the generalizable approach
+could harness strong data priors. 
+          </p>
+        </div>
+      </div>
+    </div>
+
+</section>
+
+<section class="hero dataset">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <h2 class="title is-3 has-text-centered">SceneSplat-49K Dataset</h2>
+      <p>
+        We present SceneSplat-49K, a large-scale 3D Gaussian Splatting dataset comprising approximately
+        49K raw scenes and 46K curated 3DGS scenes aggregated from SceneSplat-7K, DL3DV-10K, HoliCity,
+        Aria Synthetic Environments, and newly collected crowdsourced data. The corpus spans diverse indoor
+        and outdoor environments, from rooms and apartments to streets. To support 3DGS scene understanding,
+        12K scenes are further enriched with per-primitive vision-language embeddings extracted using
+        state-of-the-art vision-language models. 
+      </p>
+      <div class="columns is-centered is-variable is-5">
+        <div class="column is-four-fifths">
+          <img src="static/images/dataset_table.png" class="interpolation-image" alt="Dataset statistics">
+        </div>
+      </div>
+      <div class="columns is-centered is-variable is-5">
+        <div class="column is-four-fifths">
+          <img src="static/images/dataset_stats.png" class="interpolation-image" alt="Dataset statistics visualization">
+          
+        </div>
+      </div>
+      <p>
+        Appearance, Geometry, and Scale Statistics of the SceneSplat-49K Dataset. Distributions of photometric (PSNR, SSIM, LPIPS) and geometric (depth ℓ1) reconstruction errors show consistently high-quality renders across scenes, while the wide spread in total Gaussian number and indoor/outdoor scene floor area demonstrates the dataset’s diversity. The curves are convolved from the bucket values and vertical dotted lines mark the mean of each metric.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="hero benchmark">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <h2 class="title is-3 has-text-centered">SceneSplat-Bench</h2>
+      <p>
+        Our benchmark standardizes evaluation for LGS models with 3.7&times; more semantic classes and 50.5&times; more scenes than prior protocols.
+      </p>
+      <img src="static/images/benchmark_overview.png" class="interpolation-image" alt="Benchmark overview">
+      <p>
+        Language Gaussian Splatting (LGS) Benchmark Overview. Left: Grouped methods and their properties. Right: Benchmark characteristics. Our proposed SceneSplat-Bench benchmark evaluates the LGS methods at scale, across three indoor datasets and one outdoor dataset.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="hero experiments">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <h2 class="title is-3 has-text-centered">Experiments &amp; Key Findings</h2>
+
+      <div class="box">
+        <h3 class="title is-4">Task 1: Semantic Segmentation</h3>
+        <img src="static/images/semseg_table.png" class="interpolation-image" alt="Semantic segmentation table">
+        <p>
+          Zero-Shot 3D Semantic Segmentation Experiments On ScanNet++ and Matterport3D.
+          All methods are evaluated on a 10-scene mini-validation set, with the full set evaluated
+          only for selected methods due to runtime limitations
+        </p>
+        <img src="static/images/semseg_vis.png" class="interpolation-image" alt="Semantic segmentation visualization" style="width: 100%; margin-top: 1rem;">
+        <p>
+          Qualitative Results of Zero-Shot 3D Semantic Segmentation. The semantic classes "bicycle" and "kitchen table" are highlighted, which are not labeled in Ground Truth.
+        </p>
+      </div>
+
+      <div class="box">
+        <h3 class="title is-4">Task 2: Object Localization</h3>
+        <p>
+          Our benchmark evaluates precise language-driven localization via textual grounding and object-centric reasoning.
+        </p>
+        <img src="static/images/localization_table.png" class="interpolation-image" alt="Localization table">
+        <p>
+        3D Object Localization Experiments on ScanNet and ScanNet++. Accuracy is reported with bounding box–based and segmentation–based evaluation.
+        </p> 
+        <img src="static/images/text_query_vis.png" class="interpolation-image" alt="Textual query visualization" style="width: 100%; margin-top: 1rem;">
+        <p>
+          Text-Based Scene Query. Given the prompt "These are fruits" to different LGS methods, the queried parts are highlighted in red.
+        </p> 
+      </div>
+
+      <div class="box">
+        <h3 class="title is-4">Scaling-Up</h3>
+        <p>
+          Scaling the generalizable pipeline on the proposed dataset consistently improves performance. Notably, models trained solely on indoor data transfer effectively to outdoor scenes.
+        </p>
+        <div class="columns is-variable is-5">
+          <div class="column is-full">
+            <img src="static/images/scale_table.png" class="interpolation-image" alt="Scaling results table">
+          </div>
+        </div>
+        <p>
+          Impact of training-data scaling on indoor benchmarks and cross-domain generalization to HoliCity.
+          Results show that more training data consistently improves indoor performance.
+          Furthermore, models trained on indoor data only surprisingly transfer to outdoor scenes.
+        </p>
+        <div class="columns is-variable is-5">
+          <div class="column is-full">
+            <img src="static/images/scale_outdoor.png" class="interpolation-image" alt="Scaling to outdoor scenes">
+          </div>
+        </div>
+        <p>
+          Zero-shot predictions of indoor-trained SceneSplat on outdoor scenes. The results highlight the cross-domain capability.
+          Color palette denotes buildings (red), roads (blue), terrains (yellow), and trees (green).
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+<!-- <section class="hero architecture">
+  <div class="container is-max-desktop ">
+    <div class="hero-body has-text-centered">
+        <h2 class="title is-3">GaussianVLM Architecture</h2> 
+        <img src="static/images/long.png" class="interpolation-image">
+        
+        <p>
+          The <strong>GaussianVLM</strong> architecture takes as input a user-defined task prompt—consisting of a query and an optional spatial location—and a 3D scene represented using Gaussians. A 3D vision module, the <em>SceneSplat Transformer</em>, first predicts per-Gaussian language features across the scene.
+          <br><br>
+          These dense language features are then processed by a <strong>dual sparsifier</strong>. This sparsifier includes two parallel components: (1) a <em>location-guided pathway</em> that selects Gaussians within a spatial Region of Interest (ROI) to produce ROI tokens; and (2) a <em>task-guided pathway</em> that uses cross-attention with task tokens to extract 128 task-selected tokens based on the decoder’s hidden states and dense scene features.
+          <br><br>
+          The resulting sparse representation—composed of both ROI and task-selected tokens—is then combined with the task tokens and passed to a multimodal decoder, enabling precise and grounded reasoning over the 3D scene for downstream language-vision tasks.
+        </p>
+    </div>
+  </div>
+</section> -->
+
+
+<!-- <section class="hero quantitative">
+  <div class="container is-max-desktop ">
+    <div class="hero-body has-text-centered">
+        <h2 class="title is-3">Quantitative Results</h2> 
+<p>
+    Our evaluation comprises scene-centric [situated QA & embodied tasks] and object-centric tasks.
+    <br>To assess real-world robustness, we also test generalization to out-of-domain (OOD) data on scenes reconstructed from RGB images, a more realistic input setting compared to traditional point cloud capture methods.
+</p>
+<button class="info-toggle" onclick="toggleInfo(this)">i</button>
+
+
+
+<!-- <section class="hero qualitative">
+  <div class="container is-max-desktop ">
+    <div class="hero-body has-text-centered">
+        <h2 class="title is-3">Qualitative Results</h2> 
+   
+<div class="tabs_outer">
+  <button class="tab_outer active" onclick="switchTabOuter(0)">Scene-Centric Tasks</button>
+  <button class="tab_outer" onclick="switchTabOuter(1)">Object-Centric Tasks</button>
+</div>
+
+<div class="tab_outer-content active">
+
+<div class="tabs">
+  <button class="tab active" onclick="switchTab(0)">Situated QA </button>
+  <button class="tab" onclick="switchTab(1)">Planning</button>
+  <button class="tab" onclick="switchTab(2)">Dialog</button>
+  <button class="tab" onclick="switchTab(3)">Scene Caption</button>
+</div>
+
+<div class="tab-content active">
+  <div class="content has-text-justified">
+      <img src="static/images/sqa3d.png" class="interpolation-image">
+      <p>   
+      </p>
+    </div>
+</div>
+
+<div class="tab-content">
+  <div class="content has-text-justified">
+      <img src="static/images/plan.png" class="interpolation-image">
+      <p>   
+      </p>
+    </div>
+
+</div>
+
+<div class="tab-content">
+  <div class="content has-text-justified">
+      <img src="static/images/dialog.png" class="interpolation-image">
+      <p>   
+      </p>
+    </div>
+</div>
+
+<div class="tab-content">
+  <div class="content has-text-justified">
+      <img src="static/images/scene_cap.png" class="interpolation-image">
+      <p>   
+      </p>
+    </div>
+
+</div>
+
+
+  
+</div>
+<div class="tab_outer-content">
+
+<div class="tabs_obj">
+  <button class="tab_obj active" onclick="switchTabObj(0)">Object Caption</button>
+  <button class="tab_obj" onclick="switchTabObj(1)">Question-Answering</button>
+</div>
+
+
+<div class="tab_obj-content active">
+  <div class="content has-text-justified">
+      <img src="static/images/obj_cap.png" class="interpolation-image">
+      <p>   
+      </p>
+    </div>
+</div>
+
+<div class="tab_obj-content">
+  <div class="content has-text-justified">
+      <img src="static/images/qa.png" class="interpolation-image">
+      <p>   
+      </p>
+    </div>
+</div>
+</div>
+</div>
+
+
+
+
+
+</div>
+  </div>
+</section> -->
+
+
+
+
+
+
+
+<section class="section">
+ 
+
+  
+
+
+
+  <h2 class="title is-3">BibTeX</h2>
+  <pre><code>
+@misc{ma2025scenesplatlargedatasetcomprehensive,
+  title={SceneSplat++: A Large Dataset and Comprehensive Benchmark for Language Gaussian Splatting},
+  author={Mengjiao Ma and Qi Ma and Yue Li and Jiahuan Cheng and Runyi Yang and Bin Ren and Nikola Popovic and Mingqiang Wei and Nicu Sebe and Luc Van Gool and Theo Gevers and Martin R. Oswald and Danda Pani Paudel},
+  year={2025},
+  eprint={2506.08710},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2506.08710},
+}
+  </code></pre>
+
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+              href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            It borrows the source code of <a href="https://github.com/nerfies/nerfies.github.io">this website</a>.
+            We would like to thank Utkarsh Sinha and Keunhong Park.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+<script>
+  function switchTab(index) {
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.tab-content');
+    tabs.forEach((tab, i) => {
+      tab.classList.toggle('active', i === index);
+      contents[i].classList.toggle('active', i === index);
+    });
+  }
+
+  function switchTab2(index) {
+    const tabs = document.querySelectorAll('.tab2');
+    const contents = document.querySelectorAll('.tab-content2');
+    tabs.forEach((tab, i) => {
+      tab.classList.toggle('active', i === index);
+      contents[i].classList.toggle('active', i === index);
+    });
+  }
+
+  function switchTabOuter(index) {
+    const tabs = document.querySelectorAll('.tab_outer');
+    const contents = document.querySelectorAll('.tab_outer-content');
+    tabs.forEach((tab, i) => {
+      tab.classList.toggle('active', i === index);
+      contents[i].classList.toggle('active', i === index);
+    });
+  }
+
+  function switchTabObj(index) {
+    const tabs = document.querySelectorAll('.tab_obj');
+    const contents = document.querySelectorAll('.tab_obj-content');
+    tabs.forEach((tab, i) => {
+      tab.classList.toggle('active', i === index);
+      contents[i].classList.toggle('active', i === index);
+    });
+  }
+
+  function showInfo(box) {
+    const infoBox = document.getElementById('info-box');
+    if (box === 'box1') {
+      infoBox.innerHTML = `<strong>Box 1</strong><br>This region corresponds to XYZ...`;
+    } else if (box === 'box2') {
+      infoBox.innerHTML = `<strong>Box 2</strong><br>This region corresponds to ABC...`;
+    }
+  }
+
+  function toggleInfo(button) {
+    const content = button.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  }
+</script>
+
+</body>
+</html>
