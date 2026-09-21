@@ -1,0 +1,2 @@
+# Generated vendor bundles contain intentional whitespace inside shader strings.
+assets/*.js -whitespace

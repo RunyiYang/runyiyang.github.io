@@ -1,0 +1,80 @@
+{
+  "timestamp": "2026-09-21T14:24:41.056Z",
+  "base": "http://127.0.0.1:4173/projects/PhiRIE/",
+  "checks": [
+    {
+      "name": "Landing page and deferred 3D assets",
+      "status": "PASS",
+      "detail": "12 initial gallery cards; no model downloads before launch"
+    },
+    {
+      "name": "Media and provenance links",
+      "status": "PASS",
+      "detail": "56 URLs return HTTP 200"
+    },
+    {
+      "name": "Gallery controls",
+      "status": "PASS",
+      "detail": "Filtering, search, empty state, pagination, image dialog, Escape dismissal"
+    },
+    {
+      "name": "Matched-view comparison",
+      "status": "PASS",
+      "detail": "Object selection and divider controls"
+    },
+    {
+      "name": "Six recorded videos",
+      "status": "PASS",
+      "detail": "All metadata loaded; duration 4–7 s; playback advanced"
+    },
+    {
+      "name": "WebGPU scene editing",
+      "status": "PASS",
+      "detail": "Native WGSL Gaussian rendering; all four stages, movement, rotation, reset; rendered pixels change"
+    },
+    {
+      "name": "WebGPU physics interaction",
+      "status": "PASS",
+      "detail": "Gravity settles object; projectile moves target; mass, object switching, throw, convex-hull display and reset"
+    },
+    {
+      "name": "WebGPU robot replay",
+      "status": "PASS",
+      "detail": "213-state timeline, exact contact jump, playback, trajectory toggle, wireframe, reset"
+    },
+    {
+      "name": "Accessibility audit",
+      "status": "PASS",
+      "detail": "No WCAG 2 A/AA or WCAG 2.1 AA violations detected by axe"
+    },
+    {
+      "name": "Mobile layout",
+      "status": "PASS",
+      "detail": "390px viewport, touch controls, no horizontal overflow"
+    },
+    {
+      "name": "Unavailable WebGPU fallback",
+      "status": "PASS",
+      "detail": "Recorded-video link and understandable support message"
+    },
+    {
+      "name": "Browser runtime",
+      "status": "PASS",
+      "detail": "No uncaught exceptions or console errors"
+    }
+  ],
+  "errors": [],
+  "warnings": [
+    "using deprecated parameters for the initialization function; pass a single object instead"
+  ],
+  "adapter": {
+    "vendor": "google",
+    "architecture": "swiftshader",
+    "isFallbackAdapter": true
+  },
+  "limitations": [
+    "Software WebGPU adapter; physical GPU/browser performance is not measured."
+  ],
+  "accessibility": [],
+  "status": "PASS"
+}
