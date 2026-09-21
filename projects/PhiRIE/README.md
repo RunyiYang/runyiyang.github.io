@@ -4,8 +4,9 @@ Live page: https://runyiyang.github.io/projects/PhiRIE/
 
 This folder includes the deployable page and the complete editable source in
 [`_source/`](./_source/). It contains three interactive WebGPU experiences,
-45 visualization views, six recorded videos, three paper figures, the manuscript
-snapshot, 3D assets, self-hosted fonts, browser tests, and asset provenance.
+45 visualization views, six recorded videos, three paper figures, 3D assets,
+self-hosted fonts, browser tests, and asset provenance. The old manuscript PDF
+has been withdrawn; its link will be added after the authors provide arXiv.
 
 ## Edit and rebuild
 

@@ -77,3 +77,9 @@ The completed source, build archive, and deployment receipt are retained under
 
 One non-failing upstream Rapier initialization deprecation warning is recorded
 by the browser test. The production site does not use the Vite development server.
+
+## Manuscript withdrawal — 2026-09-21
+
+The old PDF snapshot and its download button were removed at the authors'
+request. The paper link is withheld pending arXiv. The current public manifest
+contains 60 assets; counts above describe the original delivery.

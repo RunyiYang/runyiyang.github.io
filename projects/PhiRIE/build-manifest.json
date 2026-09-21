@@ -78,8 +78,8 @@
     },
     {
       "file": "index.html",
-      "bytes": 21945,
-      "sha256": "0493efd0f9eadb1294177be8dce254ea8b5e3241b0dccb95152296c479648acc"
+      "bytes": 21627,
+      "sha256": "301bace8432ec78958203bffd4c77212241a7863daae0d0a6289745c7322e5f9"
     },
     {
       "file": "media/bottle-01.webp",
@@ -307,11 +307,6 @@
       "sha256": "77dedb4dfd8017d844fb5f4c184315cb272f032fab6b62fbac7c9364437ce3e2"
     },
     {
-      "file": "media/manuscript-snapshot.pdf",
-      "bytes": 391403,
-      "sha256": "6134220ae8e933aa9234b536ef10823b7cc2b70c56b3da89078ca52fc4b12723"
-    },
-    {
       "file": "media/paper-qualitative.webp",
       "bytes": 306484,
       "sha256": "fee77d121dff838d244b334df4f5bdbe2dbe44979a0b20a881f597547bab9b77"
@@ -393,8 +388,8 @@
     },
     {
       "file": "provenance.json",
-      "bytes": 33077,
-      "sha256": "ed3b3a0088638ade95870eec15b6248535ee6bee7cd2bd9d2323698bcd1a5806"
+      "bytes": 32596,
+      "sha256": "ef1f5547acc2c8cce98137b00dc946713ee037294e7ac535fa5c4c16e923c514"
     }
   ]
 }
