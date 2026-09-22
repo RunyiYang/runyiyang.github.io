@@ -7,13 +7,14 @@ import { fileURLToPath } from "node:url";
 const source = fileURLToPath(new URL("../", import.meta.url));
 const build = path.join(source, "dist");
 const destination = path.resolve(source, "..");
-const manifestPath = path.join(destination, "build-manifest.json");
+const manifestPath = path.join(source, ".published-files.json");
 const allowedRoots = new Set(["assets", "fonts", "media", "models"]);
 const allowedFiles = new Set([
   "index.html",
   "favicon.svg",
   "gallery.json",
   "provenance.json",
+  "demos.json",
 ]);
 function checkName(name) {
   assert(!path.isAbsolute(name) && !name.split("/").includes(".."));
