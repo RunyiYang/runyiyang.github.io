@@ -7,19 +7,19 @@
       "sha256": "8486526ac118ee275ca4d0b1665f81ea4eaa04f317c741aebf690d4ec86af1bd"
     },
     {
-      "file": "assets/index-D7pYhKFC.css",
-      "bytes": 29844,
-      "sha256": "95677c78f56bc914af97d26c72aeb2e3519c65b6adec10f5842f4d7f73190b45"
+      "file": "assets/index-BtPgpaKN.css",
+      "bytes": 29883,
+      "sha256": "daeb643e46e844d3109b7af28f6ff7153c21a9b526756f4fbe6f1916a7a0634c"
     },
     {
-      "file": "assets/index-xfheXjg9.js",
+      "file": "assets/index-gptnNnJ6.js",
       "bytes": 7801,
-      "sha256": "85ab42df2badfa47c6b87eeeb8f2cb9817c3b7c44636262a343470341c06880c"
+      "sha256": "4752dd663c7d49a159db66e01b977d2039f222c718d258f2d76661e7bbdeb4d0"
     },
     {
-      "file": "assets/lab-tFwcWcDy.js",
+      "file": "assets/lab-PvC-d7CE.js",
       "bytes": 8174,
-      "sha256": "c28e24defbb76643690aa6b6b8d3700387c33af1db7e3432173a577b4bfac853"
+      "sha256": "f71f9ff7ba17c6193ba52592f78f345c46e0c1c14761b596c1168a953dffe903"
     },
     {
       "file": "assets/OrbitControls-BU1l45DC.js",
@@ -84,7 +84,7 @@
     {
       "file": "index.html",
       "bytes": 38590,
-      "sha256": "00e678e354cfaad1886e3486520e35cb7e11e3dabfa3a4f63860ef22f52ce3b8"
+      "sha256": "478c9d33a48e312ac10d71377bf1c9b324a65547c89b40b799f002f1960af7f0"
     },
     {
       "file": "media/bottle-01.webp",
