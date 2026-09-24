@@ -129,3 +129,111 @@ name {
 span.highlight {
   background-color: #ffffd0;
 }
+
+/* Research overview: branches connect each area to the shared research theme. */
+.research-overview {
+  padding: 20px;
+}
+
+.research-overview h2 {
+  font-size: 22px;
+  font-weight: 400;
+  margin: 0 0 20px;
+}
+
+.research-map {
+  display: grid;
+  grid-template-columns: 175px minmax(0, 1fr);
+  align-items: center;
+}
+
+.research-root {
+  position: relative;
+  margin: 0;
+  padding: 16px 20px 16px 0;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #1772d0;
+}
+
+.research-root::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  right: 0;
+  top: 50%;
+  border-top: 1px solid #cbd5e1;
+}
+
+.research-branches {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.research-branch {
+  position: relative;
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  padding: 15px 0 15px 25px;
+}
+
+.research-branch::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border-left: 1px solid #cbd5e1;
+}
+
+.research-branch:first-child::before { top: 50%; }
+.research-branch:last-child::before { bottom: 50%; }
+
+.research-branch::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 16px;
+  border-top: 1px solid #cbd5e1;
+}
+
+.research-branch h4 {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.research-papers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.research-papers a {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background: #eef4fc;
+  color: #1772d0;
+  text-decoration: none;
+  line-height: 1.4;
+}
+
+.research-papers a:hover,
+.research-papers a:focus-visible {
+  background: #e0ecfb;
+  text-decoration: underline;
+}
+
+.research-branch:hover::after,
+.research-branch:focus-within::after { border-color: #1772d0; }
+
+@media (max-width: 640px) {
+  .research-map { grid-template-columns: 150px minmax(0, 1fr); }
+  .research-branch { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+}
