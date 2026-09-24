@@ -237,3 +237,19 @@ span.highlight {
   .research-map { grid-template-columns: 150px minmax(0, 1fr); }
   .research-branch { grid-template-columns: minmax(0, 1fr); gap: 8px; }
 }
+
+
+.research-map[hidden] { display: none; }
+.research-tree-viewport { overflow-x: auto; }
+.research-tree { display: block; width: 100%; min-width: 720px; height: auto; }
+.research-tree text { font-family: 'Lato', Verdana, Helvetica, sans-serif; font-size: 14px; fill: #252525; }
+.research-tree circle { fill: #8b949e; }
+.research-tree .research-tree-root { fill: #1772d0; font-weight: 600; }
+.research-tree-lines path { fill: none; stroke: #cbd5e1; stroke-width: 1.5; transition: stroke .15s; }
+.research-tree-lines path.active { stroke: #1772d0; stroke-width: 2.4; }
+.research-tree-paper rect { fill: #eef4fc; }
+.research-tree-paper text { fill: #1772d0; }
+.research-tree-paper:hover rect,
+.research-tree-paper:focus rect { fill: #dceafb; stroke: #1772d0; }
+.research-tree-paper:hover text,
+.research-tree-paper:focus text { text-decoration: underline; }
