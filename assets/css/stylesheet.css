@@ -285,17 +285,29 @@ span.highlight {
 .affiliation-logos > a:focus-visible { background: #f8fafc; }
 .affiliation-logos img { display: block; object-fit: contain; max-width: 100%; }
 .affiliation-logos .logo-wide { width: 160px; max-height: 64px; }
+.affiliation-logos .logo-air { width: 125px; height: auto; }
 .affiliation-logos .logo-crest { width: auto; height: 68px; }
 .affiliation-logos .logo-vivo { width: 120px; height: auto; }
-.insait-wordmark { position: relative; display: block; width: 168px; height: 48px; overflow: hidden; }
+.insait-wordmark { position: relative; display: block; width: 112px; height: 32px; overflow: hidden; }
 .affiliation-logos .insait-wordmark img {
   position: absolute;
-  width: 200px;
+  width: 133.333px;
   height: auto;
   max-width: none;
-  left: -18px;
-  top: -14px;
+  left: -12px;
+  top: -9.333px;
 }
 @media (max-width: 600px) {
   .affiliation-logos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 12px; }
+}
+
+/* Match primary lettering optically, independent of source-image padding. */
+.pxo-wordmark { position: relative; display: block; width: 94px; height: 34px; overflow: hidden; }
+.affiliation-logos .pxo-wordmark img {
+  position: absolute;
+  width: 280px;
+  height: auto;
+  max-width: none;
+  left: -19px;
+  top: -56px;
 }
