@@ -263,3 +263,39 @@ span.highlight {
 .research-papers .paper-venue::before { content: " · "; }
 .research-tree-paper .research-tree-venue { fill: #64748b; font-size: 12px; font-weight: 400; }
 .research-tree-paper .research-tree-award { font-size: 11px; }
+
+/* Balanced affiliation grid; retain only the INSAIT wordmark in its crop. */
+.affiliation-logos {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px 20px;
+  margin: 24px 20px 32px;
+  padding: 16px 0;
+  border-top: 1px solid #edf0f4;
+  border-bottom: 1px solid #edf0f4;
+}
+.affiliation-logos > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 96px;
+  border-radius: 8px;
+}
+.affiliation-logos > a:hover,
+.affiliation-logos > a:focus-visible { background: #f8fafc; }
+.affiliation-logos img { display: block; object-fit: contain; max-width: 100%; }
+.affiliation-logos .logo-wide { width: 160px; max-height: 64px; }
+.affiliation-logos .logo-crest { width: auto; height: 68px; }
+.affiliation-logos .logo-vivo { width: 120px; height: auto; }
+.insait-wordmark { position: relative; display: block; width: 168px; height: 48px; overflow: hidden; }
+.affiliation-logos .insait-wordmark img {
+  position: absolute;
+  width: 200px;
+  height: auto;
+  max-width: none;
+  left: -18px;
+  top: -14px;
+}
+@media (max-width: 600px) {
+  .affiliation-logos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 12px; }
+}
