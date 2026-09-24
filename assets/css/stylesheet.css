@@ -272,3 +272,9 @@ span.highlight {
 .visitor-map-link[hidden] { display: none; }
 #visitor-map-fallback { padding: 24px 16px; background: #f4f7fb; border-radius: 12px; color: #475569; }
 .visitor-map-caption { margin: 10px 0 0; font-size: 13px; }
+
+
+.research-papers .paper-name,
+.research-papers .paper-venue { display: block; }
+.research-papers .paper-venue { margin-top: 3px; color: #475569; font-size: 12px; }
+.research-tree-paper .research-tree-venue { fill: #475569; font-size: 12px; }
