@@ -103,6 +103,7 @@
       </td>
       <td style="padding:0.0%;width:60%;max-width:60%">
         <a href="assets/images/myself.jpg"><img style="width:80%;max-width:80%" alt="profile photo" src="assets/images/myself.jpg" class="hoverZoomLink"></a>
+        <p style="width:80%;margin-top:12px;text-align:center"><strong>Physical AI Foundation Models</strong></p>
       </td>
     </tr>
     </table>
@@ -126,7 +127,7 @@
           <heading>✨News🔥</heading>
           <ul id="newsList">
           <p>
-            <li class="news-item" data-date="2026-05"><strong>05/2026</strong> 🏆 Our paper <a href="https://arxiv.org/pdf/2512.17817">Chorus: Multi-Teacher Pretraining for Holistic 3D Gaussian Scene Encoding</a> has been accepted by CVPR 2026 (Oral Presentation).
+            <li class="news-item" data-date="2026-05"><strong>05/2026</strong> 🏆 Our paper <a href="https://arxiv.org/pdf/2512.17817">Chorus: Multi-Teacher Pretraining for Holistic 3D Gaussian Scene Encoding</a> has been accepted by CVPR 2026 (Award List).
             <li class="news-item" data-date="2026-01"><strong>01/2026</strong> 🎉 Our paper <a href="https://openreview.net/forum?id=IBzmQVia88">ExDA: Rethinking Expressivity and Degradation-Awareness in Attention for All-in-One Blind Image Restoration</a> has been accepted by ICLR 2026.
             <li class="news-item" data-date="2026-01"><strong>01/2026</strong> 🎉 Our paper <a href="https://openreview.net/forum?id=DKD4QbOKBN">EgoNight: Towards Egocentric Vision Understanding at Night with a Challenging Benchmark</a> has been accepted by ICLR 2026.
             <li class="news-item" data-date="2025-09"><strong>09/2025</strong> 🎉 Exciting news! Our paper <a href="https://arxiv.org/pdf/2506.08710">SceneSplat++</a> has been accepted by NeurIPS 2025.
@@ -150,7 +151,91 @@
 
     <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
       <heading>Research</heading>
-      <tr onmouseout="nerfsuper_stop()" onmouseover="nerfsuper_start()">
+      <tr style="background-color: #ffffd0;">
+        <td style="padding:20px;width:25%;vertical-align:middle">
+          <div class="one">
+            <img src="projects/PhiRIE/media/paper-qualitative.webp" width="180" style="max-height:160px;object-fit:contain" alt="PhiRIE reconstructed interactive environments" loading="lazy">
+          </div>
+        </td>
+        <td style="padding:20px;width:75%;vertical-align:middle">
+          <a href="projects/PhiRIE/">
+            <papertitle>ϕ-RIE: From Photorealistic Reconstruction to Interactive Environments</papertitle>
+          </a>
+          <br>
+          <strong>Runyi Yang</strong>, Deheng Zhang, Xiaoye Wang, Kanzhi Wu, Lei Sun, Ajad Chhatkuli, Kunyu Peng, Luc Van Gool, Danda Pani Paudel
+          <br>
+          <span style="color:#FF0000">arXiv, 2026</span>
+          <br>
+          <br>
+          PhiRIE turns captured rooms into interactive environments with object geometry, contact surfaces, and visual identities that remain connected during motion.
+          <br>
+          <a href="projects/PhiRIE/">Project homepage</a> / <a href="https://arxiv.org/abs/2609.26795">arxiv</a> / <a href="https://github.com/RunyiYang/PhysicalView">PhiView code</a>
+        </td>
+      </tr>
+      <tr style="background-color: #ffffd0;">
+        <td style="padding:20px;width:25%;vertical-align:middle">
+          <div class="one">
+            <img src="assets/images/LangStreet.png" width="180" style="max-height:160px;object-fit:contain" alt="LangStreet persistent language field overview" loading="lazy">
+          </div>
+        </td>
+        <td style="padding:20px;width:75%;vertical-align:middle">
+          <a href="https://arxiv.org/abs/2609.11616">
+            <papertitle>LangStreet: Persistent Language Fields for Anchor-Decoded Street Gaussians</papertitle>
+          </a>
+          <br>
+          <strong>Runyi Yang</strong>, Deheng Zhang, Xiaoye Wang, Mengjiao Ma, Lei Sun, Kanzhi Wu, Ajad Chhatkuli, Luc Van Gool, Danda Pani Paudel
+          <br>
+          <span style="color:#FF0000">arXiv, 2026</span>
+          <br>
+          <br>
+          LangStreet attaches persistent language features to anchors and decoder slots, enabling text queries in large street scenes while preserving semantic detail with compact storage.
+          <br>
+          <a href="https://arxiv.org/abs/2609.11616">arxiv</a>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:20px;width:25%;vertical-align:middle">
+          <div class="one">
+            <img src="assets/images/LiDAR-Hallu.png" width="180" style="max-height:160px;object-fit:contain" alt="LiDAR-Hallu benchmark overview" loading="lazy">
+          </div>
+        </td>
+        <td style="padding:20px;width:75%;vertical-align:middle">
+          <a href="https://arxiv.org/abs/2609.24452">
+            <papertitle>Do LiDAR Language Models Really Understand Spatio-temporal Relationships?</papertitle>
+          </a>
+          <br>
+          <strong>Runyi Yang</strong>, Murat Akkoyun, Di Wen, Ruiping Liu, Yufan Chen, Junwei Zheng, Xiaoye Wang, Kailun Yang, Danda Pani Paudel, Luc Van Gool, Kunyu Peng
+          <br>
+          <span style="color:#FF0000">arXiv, 2026</span>
+          <br>
+          <br>
+          LiDAR-Hallu introduces a geometry-referenced benchmark with 10,000 questions across 150 nuScenes scenes to test whether LiDAR language models understand spatial and temporal relationships.
+          <br>
+          <a href="https://arxiv.org/abs/2609.24452">arxiv</a> / <a href="https://github.com/Awesome4D/4DMLLM_Hallucination_Bench">Code</a>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:20px;width:25%;vertical-align:middle">
+          <div class="one">
+            <img src="assets/images/CoRef-GS.png" width="180" style="max-height:160px;object-fit:contain" alt="CoRef-GS cooperative scene understanding pipeline" loading="lazy">
+          </div>
+        </td>
+        <td style="padding:20px;width:75%;vertical-align:middle">
+          <a href="https://arxiv.org/abs/2609.20586">
+            <papertitle>CoRef-GS: Cooperative Referring Gaussian Splatting for Multi-Agent Scene Understanding</papertitle>
+          </a>
+          <br>
+          Zhikun Zhou, Kunyu Peng, <strong>Runyi Yang</strong>, Junhao Cai, Di Wen, Ruiping Liu, Danda Pani Paudel, Yi Zhou, Luc Van Gool, Kailun Yang
+          <br>
+          <span style="color:#FF0000">arXiv, 2026</span>
+          <br>
+          <br>
+          CoRef-GS aligns and fuses instance-aware Gaussian maps from multiple robots to ground language queries from the querying robot’s viewpoint, alongside the CoQuad-Ref benchmark.
+          <br>
+          <a href="https://arxiv.org/abs/2609.20586">arxiv</a> / <a href="https://github.com/ruojiruoli17/CoRef-GS">Code</a>
+        </td>
+      </tr>
+      <tr onmouseout="nerfsuper_stop()" onmouseover="nerfsuper_start()" style="background-color: #ffffd0;">
         <td style="padding:20px;width:25%;vertical-align:middle">
           <div class="one">
             <img src='assets/images/Chorus.png' width="180" height="">
@@ -163,7 +248,7 @@
           <br>
           Yue Li*, Qi Ma*, <strong>Runyi Yang</strong>, Mengjiao Ma, Bin Ren, Nikola Popovic, Nicu Sebe, Theo Gevers, Luc Van Gool, Danda Pani Paudel, Martin R. Oswald
           <br>
-          <a style="color:#FF0000;text-decoration:none">CVPR 2026 (Oral Presentation)</a>
+          <a style="color:#FF0000;text-decoration:none">CVPR 2026 (Award List)</a>
           <br>
           <br>
           Chorus introduces a powerful 3D Gaussian scene encoding.
