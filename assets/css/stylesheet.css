@@ -247,12 +247,14 @@ span.highlight {
 .research-tree .research-tree-root { fill: #1772d0; font-weight: 600; }
 .research-tree-lines path { fill: none; stroke: #cbd5e1; stroke-width: 1.5; transition: stroke .15s; }
 .research-tree-lines path.active { stroke: #1772d0; stroke-width: 2.4; }
-.research-tree-paper rect { fill: #eef4fc; }
-.research-tree-paper text { fill: #1772d0; }
+.research-tree-paper { text-decoration: none; }
+.research-tree-paper rect { fill: #f1f5fb; }
+.research-tree-paper text { fill: #1772d0; text-decoration: none; }
+.research-tree-name { font-weight: 600; }
 .research-tree-paper:hover rect,
 .research-tree-paper:focus rect { fill: #dceafb; stroke: #1772d0; }
-.research-tree-paper:hover text,
-.research-tree-paper:focus text { text-decoration: underline; }
+.research-tree-paper:hover .research-tree-name,
+.research-tree-paper:focus .research-tree-name { text-decoration: underline; }
 
 
 .visitor-map {
@@ -275,6 +277,8 @@ span.highlight {
 
 
 .research-papers .paper-name,
-.research-papers .paper-venue { display: block; }
-.research-papers .paper-venue { margin-top: 3px; color: #475569; font-size: 12px; }
-.research-tree-paper .research-tree-venue { fill: #475569; font-size: 12px; }
+.research-papers .paper-venue { display: inline; }
+.research-papers .paper-venue { color: #64748b; font-size: 12px; }
+.research-papers .paper-venue::before { content: " · "; }
+.research-tree-paper .research-tree-venue { fill: #64748b; font-size: 12px; font-weight: 400; }
+.research-tree-paper .research-tree-award { font-size: 11px; }

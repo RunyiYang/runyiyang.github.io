@@ -24,9 +24,9 @@
   let y = 12;
   areas.forEach(area => {
     area.papers.forEach(paper => {
-      paper.height = paper.venue ? 46 : 28;
+      paper.height = 28;
       paper.y = y + paper.height / 2;
-      y += paper.height + 8;
+      y += paper.height + 6;
     });
     area.y = (area.papers[0].y + area.papers[area.papers.length - 1].y) / 2;
     y += 18;
@@ -61,12 +61,17 @@
     make('text', {x: 225, y: area.y, 'dominant-baseline': 'middle'}, group, area.name);
     highlight(group, [trunk]);
     area.papers.forEach(paper => {
-      const branch = curve(415, area.y, 495, paper.y);
-      make('circle', {cx: 495, cy: paper.y, r: 3.5}, nodes);
+      const branch = curve(415, area.y, 470, paper.y);
+      make('circle', {cx: 470, cy: paper.y, r: 3.5}, nodes);
       const link = make('a', {href: paper.url, class: 'research-tree-paper', 'aria-label': `${paper.name}${paper.venue ? `, ${paper.venue}` : ''} — ${area.name}`}, nodes);
-      make('rect', {x: 505, y: paper.y - paper.height / 2, width: paper.name.length * 8 + 20, height: paper.height, rx: 8}, link);
-      make('text', {x: 515, y: paper.y - (paper.venue ? 9 : 0), 'dominant-baseline': 'middle'}, link, paper.name);
-      if (paper.venue) make('text', {x: 515, y: paper.y + 10, 'dominant-baseline': 'middle', class: 'research-tree-venue'}, link, paper.venue);
+      make('rect', {x: 480, y: paper.y - paper.height / 2, width: paper.name.length * 8 + 20, height: paper.height, rx: 8}, link);
+      const label = make('text', {x: 490, y: paper.y, 'dominant-baseline': 'middle'}, link);
+      make('tspan', {class: 'research-tree-name'}, label, paper.name);
+      if (paper.venue) {
+        const venue = paper.venue.replace(' 🏆', '');
+        make('tspan', {class: 'research-tree-venue', dx: 6}, label, `· ${venue}`);
+        if (paper.venue.includes('🏆')) make('tspan', {class: 'research-tree-award', dx: 5}, label, '🏆');
+      }
       highlight(link, [trunk, branch]);
     });
   });
@@ -75,9 +80,15 @@
   viewport.appendChild(svg);
   section.appendChild(viewport);
   // Size each chip from its rendered label, including after web fonts load.
-  const sizeChips = () => svg.querySelectorAll('a').forEach(link => {
-    link.querySelector('rect').setAttribute('width', Math.max(...[...link.querySelectorAll('text')].map(text => text.getBBox().width)) + 20);
-  });
+  const sizeChips = () => {
+    let width = 820;
+    svg.querySelectorAll('a').forEach(link => {
+      const chipWidth = link.querySelector('text').getBBox().width + 20;
+      link.querySelector('rect').setAttribute('width', chipWidth);
+      width = Math.max(width, 480 + chipWidth + 12);
+    });
+    svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+  };
   sizeChips();
   if (document.fonts) document.fonts.ready.then(sizeChips);
   map.hidden = true;
