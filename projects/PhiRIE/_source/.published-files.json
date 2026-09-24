@@ -7,19 +7,19 @@
       "sha256": "8486526ac118ee275ca4d0b1665f81ea4eaa04f317c741aebf690d4ec86af1bd"
     },
     {
-      "file": "assets/index-CzGdTP35.js",
-      "bytes": 6794,
-      "sha256": "99dc66e2e891e5152cb17f9716de5116248fee6ff9d056a7f0a87401fdbb2144"
+      "file": "assets/index-D7pYhKFC.css",
+      "bytes": 29844,
+      "sha256": "95677c78f56bc914af97d26c72aeb2e3519c65b6adec10f5842f4d7f73190b45"
     },
     {
-      "file": "assets/index-R2EPaFdL.css",
-      "bytes": 26181,
-      "sha256": "1d87b61a212761afd249568109e8eafc80c2adef8de26324607bcfe6c62e623d"
+      "file": "assets/index-xfheXjg9.js",
+      "bytes": 7801,
+      "sha256": "85ab42df2badfa47c6b87eeeb8f2cb9817c3b7c44636262a343470341c06880c"
     },
     {
-      "file": "assets/lab-C20zpQXp.js",
+      "file": "assets/lab-tFwcWcDy.js",
       "bytes": 8174,
-      "sha256": "b1f3379f29eac7868b596a9603078e7717903ce7cbcb6f1e5210cdc3b93e70e3"
+      "sha256": "c28e24defbb76643690aa6b6b8d3700387c33af1db7e3432173a577b4bfac853"
     },
     {
       "file": "assets/OrbitControls-BU1l45DC.js",
@@ -83,8 +83,8 @@
     },
     {
       "file": "index.html",
-      "bytes": 30167,
-      "sha256": "f11cdbe3d3a73333e86f06be73a122e20ad10b8417be3467861b1f8b255ad461"
+      "bytes": 38590,
+      "sha256": "00e678e354cfaad1886e3486520e35cb7e11e3dabfa3a4f63860ef22f52ce3b8"
     },
     {
       "file": "media/bottle-01.webp",
@@ -412,9 +412,19 @@
       "sha256": "77dedb4dfd8017d844fb5f4c184315cb272f032fab6b62fbac7c9364437ce3e2"
     },
     {
+      "file": "media/paper-main.png",
+      "bytes": 765715,
+      "sha256": "4cb9a3b9fc18d5ab7f80fb97b4d2bb4932bc4dfb46227425ffb086b910918305"
+    },
+    {
       "file": "media/paper-qualitative.webp",
       "bytes": 306484,
       "sha256": "fee77d121dff838d244b334df4f5bdbe2dbe44979a0b20a881f597547bab9b77"
+    },
+    {
+      "file": "media/paper-teaser-arxiv.png",
+      "bytes": 1766696,
+      "sha256": "cdce1e98c2e9e5391e670e16838b00d3e1329cb05750d16a8e999c2569f6c412"
     },
     {
       "file": "media/paper-teaser.webp",
@@ -430,6 +440,11 @@
       "file": "media/phirie-demo.webp",
       "bytes": 96106,
       "sha256": "48897dd57ee7480de7814690beb7a6edcba638ab5f1a01e02da92840172d16eb"
+    },
+    {
+      "file": "media/phirie.bib",
+      "bytes": 409,
+      "sha256": "61148fbcdf4fe47828c2d7fe1c7e56c564fc5cc8bc699b6af6885a79efd21f30"
     },
     {
       "file": "media/Q01_27dd4da69e.webp",
