@@ -301,13 +301,13 @@ span.highlight {
   .affiliation-logos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 12px; }
 }
 
-/* Match primary lettering optically, independent of source-image padding. */
-.pxo-wordmark { position: relative; display: block; width: 94px; height: 34px; overflow: hidden; }
-.affiliation-logos .pxo-wordmark img {
+/* Trim outer whitespace while retaining the complete PXO / Sony lockup. */
+.pxo-sony-wordmark { position: relative; display: block; width: 176px; height: 50px; overflow: hidden; }
+.affiliation-logos .pxo-sony-wordmark img {
   position: absolute;
-  width: 280px;
+  width: 200px;
   height: auto;
   max-width: none;
-  left: -19px;
-  top: -56px;
+  left: -13px;
+  top: -29px;
 }
